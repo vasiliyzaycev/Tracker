@@ -9,7 +9,7 @@ import Foundation
 
 public actor BroadcastTracker: Tracker {
   private let trackers: [Tracker]
-  private var limitedEvents: [String: Date] = .init()
+  private var limitedEvents: [String: Date] = [:]
   
   @MainActor
   public init(_ trackers: [Tracker]) {
