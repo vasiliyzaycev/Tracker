@@ -22,15 +22,6 @@ public protocol Trackable {
 
   /// Extra settings
   var extra: ExtraSettings? { get }
-  
-//  /// Version of encoding format adopted by event.
-//  var formatVersion: Int? { get }
-//
-//  /// Unique identifier of the current instance of the event.
-//  var trackingIdentifier: UUID? { get }
-//
-//  /// Minimal time in seconds between events with the same name and tags.
-//  var rateLimit: Int? { get }
 }
 
 public struct ExtraSettings {

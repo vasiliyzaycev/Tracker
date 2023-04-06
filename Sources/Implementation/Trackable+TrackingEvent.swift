@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension Trackable {
+extension Trackable where Self == TrackingEvent {
   public static func event(
     name: String,
     tags: [String]? = nil,
     params: [String: TrackingParameter]? = nil,
     rateLimit: Int? = nil
-  ) -> Trackable {
+  ) -> Self {
     TrackingEvent(
       name: name,
       tags: tags,
@@ -27,7 +27,7 @@ extension Trackable {
     tags: [String]? = nil,
     params: [String: TrackingParameter]? = nil,
     id: UUID = UUID()
-  ) -> Trackable {
+  ) -> Self {
     TrackingEvent(
       name: name,
       tags: tags,
