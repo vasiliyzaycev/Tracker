@@ -15,8 +15,21 @@ public struct TrackingParameter {
   }
 }
 
+extension TrackingParameter: CustomStringConvertible {
+  public var description: String {
+    guard let count else { return value }
+    return "\(value): \(count)"
+  }
+}
+
 extension TrackingParameter: ExpressibleByStringLiteral {
   public init(stringLiteral: String) {
     self.init(value: stringLiteral)
+  }
+}
+
+extension TrackingParameter: ExpressibleByIntegerLiteral {
+  public init(integerLiteral: Int) {
+    self.init(value: String(integerLiteral))
   }
 }

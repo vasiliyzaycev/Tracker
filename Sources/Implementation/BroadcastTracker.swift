@@ -26,7 +26,7 @@ public actor BroadcastTracker: Tracker {
 private extension BroadcastTracker {
   private func shouldTrack(_ event: Trackable) -> Bool {
     guard
-      let rateLimit = event.rateLimit,
+      case .rateLimit(let rateLimit) = event.extra?.incidence,
       let lastTrackDate = limitedEvents[event.fullName]
     else {
       return true
@@ -35,7 +35,7 @@ private extension BroadcastTracker {
   }
   
   private func rememberTrackDate(_ event: Trackable) {
-    guard event.rateLimit != nil else { return }
+    guard case .rateLimit = event.extra?.incidence else { return }
     self.limitedEvents[event.fullName] = .now
   }
   
