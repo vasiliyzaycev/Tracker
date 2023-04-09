@@ -31,7 +31,7 @@ private extension BroadcastTracker {
     else {
       return true
     }
-    return Date.now.timeIntervalSince(lastTrackDate) > Double(rateLimit)
+    return Date.now.timeIntervalSince(lastTrackDate) > rateLimit
   }
   
   private func rememberTrackDate(_ event: Trackable) {

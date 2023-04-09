@@ -12,7 +12,7 @@ extension Trackable where Self == TrackingEvent {
     name: String,
     tags: [String]? = nil,
     params: [String: TrackingParameter]? = nil,
-    rateLimit: Int? = nil
+    rateLimit: TimeInterval? = nil
   ) -> Self {
     TrackingEvent(
       name: name,
@@ -38,7 +38,7 @@ extension Trackable where Self == TrackingEvent {
 }
 
 private extension ExtraSettings {
-  init?(rateLimit: Int?) {
+  init?(rateLimit: TimeInterval?) {
     guard let rateLimit else { return nil }
     self.init(incidence: .rateLimit(rateLimit))
   }

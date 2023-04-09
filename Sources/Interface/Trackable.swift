@@ -36,5 +36,5 @@ public struct ExtraSettings {
 
 public enum Incidence {
   case incident(UUID)
-  case rateLimit(Int)
+  case rateLimit(TimeInterval)
 }
