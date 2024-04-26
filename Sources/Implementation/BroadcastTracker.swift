@@ -2,20 +2,24 @@
 //  BroadcastTracker.swift
 //  Tracker
 //
-//  Created by Vasiliy Zaytsev on 29.03.2023.
+//  Created by Vasiliy Zaycev on 29.03.2023.
 //
 
 import Foundation
 
 public actor BroadcastTracker: Tracker {
-  private let trackers: [Tracker]
+  private var trackers: [Tracker]
   private var limitedEvents: [String: Date] = [:]
   
   @MainActor
-  public init(_ trackers: [Tracker]) {
-    self.trackers = trackers
+  public init(_ initialTrackers: [Tracker] = []) {
+    trackers = initialTrackers
   }
-  
+
+  public func add(tracker: Tracker) {
+    trackers.append(tracker)
+  }
+
   public func track(_ event: Trackable) async throws {
     guard shouldTrack(event) else { return }
     rememberTrackDate(event)

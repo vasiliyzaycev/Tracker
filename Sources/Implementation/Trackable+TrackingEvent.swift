@@ -2,7 +2,7 @@
 //  Trackable+TrackingEvent.swift
 //  Tracker
 //
-//  Created by Vasiliy Zaytsev on 06.04.2023.
+//  Created by Vasiliy Zaycev on 06.04.2023.
 //
 
 import Foundation
