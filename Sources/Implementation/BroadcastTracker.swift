@@ -44,7 +44,7 @@ private extension BroadcastTracker {
   }
   
   private func broadcast(_ event: Trackable) async throws {
-    try await withThrowingTaskGroup(of: Void.self) { group in
+    try await withThrowingTaskGroup(of: Void.self) { [trackers] group in
       for tracker in trackers {
         group.addTask {
           try await tracker.track(event)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol Trackable {
+public protocol Trackable: Sendable {
   /// Unique human-readable identifier of the event in the tracking system.
   var name: String { get }
   
@@ -24,7 +24,7 @@ public protocol Trackable {
   var extra: ExtraSettings? { get }
 }
 
-public struct ExtraSettings {
+public struct ExtraSettings: Sendable {
   let incidence: Incidence
   let formatVersion: Int?
 
@@ -34,7 +34,7 @@ public struct ExtraSettings {
   }
 }
 
-public enum Incidence {
+public enum Incidence: Sendable {
   case incident(UUID)
   case rateLimit(TimeInterval)
 }
