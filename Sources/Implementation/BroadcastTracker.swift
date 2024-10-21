@@ -11,13 +11,12 @@ public actor BroadcastTracker: Tracker {
   private var trackers: [Tracker]
   private var limitedEvents: [String: Date] = [:]
   
-  @MainActor
-  public init(_ initialTrackers: [Tracker] = []) {
-    trackers = initialTrackers
+  public init(_ trackers: [Tracker] = []) {
+    self.trackers = trackers
   }
 
-  public func add(tracker: Tracker) {
-    trackers.append(tracker)
+  public func add(trackers: [Tracker]) {
+    self.trackers.append(contentsOf: trackers)
   }
 
   public func track(_ event: Trackable) async throws {
